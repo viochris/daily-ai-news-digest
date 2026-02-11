@@ -1,0 +1,5 @@
+requests
+python-dotenv
+prefect
+ddgs
+google-genai
