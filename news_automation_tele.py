@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from prefect import flow, task
 
 # --- AI & Search Tools ---
-from ddgs import DDGS
+from duckduckgo_search import DDGS
 from google import genai
 
 # ==========================================
