@@ -1,0 +1,48 @@
+name: Daily News Automation
+
+# TRIGGER: When should this workflow run?
+on:
+  schedule:
+    # Cron Format: 'Minute Hour * * *' (UTC Time)
+    # We want it at 07:00 AM WIB (Western Indonesia Time).
+    # Jakarta is UTC+7. So, 07:00 WIB - 7 hours = 00:00 UTC.
+    - cron: '0 2 * * *'
+  
+  # Allows you to run this workflow manually from the Actions tab (for testing)
+  workflow_dispatch:
+
+# JOBS: What tasks to execute?
+jobs:
+  run-news-bot:
+    runs-on: ubuntu-latest # Uses a standard Ubuntu runner provided by GitHub
+    
+    steps:
+      # 1. Checkout repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      # 2. Set up Python environment
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # Matches your environment
+          
+      # 3. Install required libraries
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          # Installing specific libraries used in news_automation_tele.py
+          # Note: 'duckduckgo-search' provides the 'ddgs' module
+          pip install prefect requests python-dotenv google-genai duckduckgo-search
+        
+      # 4. RUN THE SCRIPT
+      # We inject the secrets (API Keys) securely into the environment here
+      - name: Run News Bot Script
+        env:
+          # These must match os.getenv("...") in your Python script
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        
+        # Make sure your python file is named 'news_automation_tele.py' in the repo
+        run: python news_automation_tele.py
