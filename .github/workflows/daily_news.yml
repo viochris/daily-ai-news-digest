@@ -32,8 +32,7 @@ jobs:
         run: |
           pip install --upgrade pip
           # Installing specific libraries used in news_automation_tele.py
-          # Note: 'duckduckgo-search' provides the 'ddgs' module
-          pip install prefect requests python-dotenv google-genai duckduckgo-search
+          pip install prefect requests python-dotenv google-genai ddgs
         
       # 4. RUN THE SCRIPT
       # We inject the secrets (API Keys) securely into the environment here
