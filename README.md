@@ -60,8 +60,7 @@ cd daily-ai-news-digest
 
 2. **Install Dependencies**
 ```bash
-pip install -r requirements.txt
-# Requires: prefect, requests, python-dotenv, google-genai, ddgs
+pip install prefect requests python-dotenv google-genai duckduckgo-search
 ```
 
 3. **Run the Automation**
