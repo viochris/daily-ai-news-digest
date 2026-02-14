@@ -27,6 +27,12 @@ Orchestrated by **Prefect**, this bot acts as your personal news analyst. It per
 * **Smart Delivery:** Includes logic to split messages exceeding Telegram's 4096-character limit into readable chunks without breaking Markdown formatting.
 * **Fail-Fast Logic:** Explicitly raises exceptions on empty search results or API quotas to ensure the pipeline status is accurately reflected in monitoring tools.
 
+## ⚠️ Current Limitations & Disclaimer
+Please be aware of the following limitations in the current version:
+
+1. **Inaccurate 'Read More' or 'Baca Selengkapnya' Links:** The source links provided at the end of each topic might occasionally point to the publisher's main homepage rather than the specific news article.
+2. **AI Hallucination Risk:** Because the system relies on short search snippets and the 'Read More' links can be imprecise (as mentioned in number 1), the AI might hallucinate or fill in missing context for its answers. Even if it does not hallucinate and the text sounds convincing, the unclear source links mean we must assume the information could still be wrong. Therefore, please treat this version as a general overview and **ALWAYS** check and recheck its truthfulness independently on the internet.
+
 ## 🛠️ Tech Stack
 * **Orchestrator:** Prefect (Workflow Management)
 * **Language:** Python 3.11
