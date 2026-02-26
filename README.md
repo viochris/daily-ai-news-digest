@@ -66,7 +66,7 @@ cd daily-ai-news-digest
 
 2. **Install Dependencies**
 ```bash
-pip install prefect requests python-dotenv google-genai ddgs
+pip install prefect requests python-dotenv langchain-google-genai ddgs beautifulsoup4 langchain langchain-community
 ```
 
 3. **Run the Automation**
