@@ -32,7 +32,7 @@ jobs:
         run: |
           pip install --upgrade pip
           # Installing specific libraries used in news_automation_tele.py
-          pip install prefect requests python-dotenv google-genai ddgs
+          pip install prefect requests python-dotenv langchain-google-genai ddgs beautifulsoup4 langchain langchain-community
         
       # 4. RUN THE SCRIPT
       # We inject the secrets (API Keys) securely into the environment here
